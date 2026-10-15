@@ -1,0 +1,45 @@
+# Sequencing data
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.sra
+*.bam
+*.sam
+*.cram
+
+# Databases and references (rebuilt/downloaded by scripts/)
+databases/
+references/
+*.bt2
+*.bt2l
+*.zip
+
+# Nextflow
+work/
+.nextflow/
+.nextflow*
+nohup.out
+
+# Results: only figures and small summary tables are tracked
+results/*
+!results/figures/
+!results/qc/
+results/qc/fastp/
+!results/taxonomy/
+results/taxonomy/bowtie2out/
+!results/pipeline_info/
+results/pipeline_info/*
+!results/pipeline_info/versions.tsv
+
+# Machine-specific configuration
+local.config
+conf/local.config
+
+# Local planning notes
+odd/
+
+# Misc
+.DS_Store
+__pycache__/
+*.swp

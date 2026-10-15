@@ -1,0 +1,16 @@
+/*
+ * Machine-specific settings. Copy to conf/local.config (git-ignored) and edit:
+ *
+ *   cp conf/local.config.example conf/local.config
+ *   nextflow run workflow/main.nf -profile conda -c conf/local.config
+ *
+ * Paths below are placeholders. Databases and indices live OUTSIDE the
+ * repository and are only referenced here.
+ */
+params {
+    outdir          = 'results'
+    sscrofa_index   = '/path/to/databases/sscrofa11.1/Sscrofa11.1'          // bowtie2 index prefix
+    human_index     = '/path/to/databases/grch38/GRCh38_noalt_as/GRCh38_noalt_as'
+    metaphlan_index = 'mpa_vJan25_CHOCOPhlAnSGB_202503'
+    metaphlan_db    = '/path/to/databases/metaphlan'
+}

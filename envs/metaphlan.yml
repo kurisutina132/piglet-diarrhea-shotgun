@@ -1,0 +1,7 @@
+name: metaphlan
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - metaphlan=4.2.4
+  - bowtie2=2.5.5   # version resolved with metaphlan 4.2.4; pinned so the aligner cannot drift
