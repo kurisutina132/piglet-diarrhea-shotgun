@@ -1,0 +1,24 @@
+check	item	expected	observed	status	detail
+supplement	outer_zip_sha256	recorded	11a131cfe9c8d4c33e115996a79b9800f74da2d9167e04f61387842c4123317f	INFO	https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10376196/supplementaryFiles
+check1	phylum:Firmicutes:Control	36.52	36.52	PASS	swapped-label value 34.15 (does not match)
+check1	phylum:Firmicutes:Diarrhoea	34.15	34.15	PASS	swapped-label value 36.52 (does not match)
+check1	phylum:Bacteroidetes:Control	29.62	29.62	PASS	swapped-label value 27.94 (does not match)
+check1	phylum:Bacteroidetes:Diarrhoea	27.95	27.94	PASS	swapped-label value 29.62 (does not match)
+check1	phylum:Proteobacteria:Control	29.01	29.01	PASS	swapped-label value 27.68 (does not match)
+check1	phylum:Proteobacteria:Diarrhoea	27.68	27.68	PASS	swapped-label value 29.01 (does not match)
+check1	phylum:Actinobacteria:Control	2.98	2.98	PASS	swapped-label value 3.52 (does not match)
+check1	phylum:Actinobacteria:Diarrhoea	3.52	3.52	PASS	swapped-label value 2.98 (does not match)
+check1	phylum:Fusobacteria:Control	0.46	0.46	PASS	swapped-label value 5.73 (does not match)
+check1	phylum:Fusobacteria:Diarrhoea	5.73	5.73	PASS	swapped-label value 0.46 (does not match)
+check1	species:Bacteroides fragilis:Control	16.43	16.43	PASS	swapped-label value 8.84 (does not match)
+check1	species:Bacteroides fragilis:Diarrhoea	8.84	8.84	PASS	swapped-label value 16.43 (does not match)
+check1	species:Escherichia coli:Control	14.03	14.03	PASS	swapped-label value 8.68 (does not match)
+check1	species:Escherichia coli:Diarrhoea	8.68	8.68	PASS	swapped-label value 14.03 (does not match)
+check1	species:Clostridium perfringens:Control	13.07	13.07	PASS	swapped-label value 1.33 (does not match)
+check1	species:Clostridium perfringens:Diarrhoea	1.33	1.33	PASS	swapped-label value 13.07 (does not match)
+check1	species:Enterococcus faecium:Control	6.71	6.71	PASS	swapped-label value 0.14 (does not match)
+check1	species:Fusobacterium mortiferum:Diarrhoea	5.19	5.19	PASS	swapped-label value 0.09 (does not match)
+check1	species:Prevotella copri:Diarrhoea	1.80	1.80	PASS	swapped-label value 0.80 (does not match)
+check1	summary	19/19	19/19	PASS	swapped labels would match 0/19
+check2	header_groups	agree	agree	PASS	
+check3	identity	-	-	SKIPPED	no MetaPhlAn table

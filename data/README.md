@@ -30,6 +30,10 @@ headers of the paper's supplementary Tables S1, S2 and S3, where each sample col
 `Diarrhoea`. The three tables were compared sample by sample and agree on every label. `Control` was mapped
 to `healthy` and `Diarrhoea` to `diarrhea`; the original wording is kept in `group_label_original`.
 
+The assignment was then verified independently against the numbers the paper reports; see
+[label_verification.md](label_verification.md) (method, results, and the machine-readable
+`label_verification/checks.tsv`).
+
 ## Other notes
 
 - Run accession, biosample, experiment, layout, instrument, read pairs and bases come from the SRA run info
