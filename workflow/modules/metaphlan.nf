@@ -63,7 +63,8 @@ process MERGE_METAPHLAN {
     """
     # The merged table holds relative abundances only (per-sample read statistics stay in the profiles).
     # Column names come from the file names; strip the ".profile" suffix to leave the run accession.
-    merge_metaphlan_tables.py ${profiles} | sed '/^clade_name/ s/\\.profile//g' > metaphlan_merged.tsv
+    # Sort inputs by name so column order never depends on task completion order.
+    merge_metaphlan_tables.py \$(printf "%s\\n" ${profiles} | LC_ALL=C sort) | sed '/^clade_name/ s/\\.profile//g' > metaphlan_merged.tsv
 
     # Species level only: keep header lines and rows ending at s__ (no strain/SGB t__ rows, no UNCLASSIFIED).
     awk -F'\\t' '/^#/ || \$1 == "clade_name" || (\$1 ~ /s__/ && \$1 !~ /t__/)' metaphlan_merged.tsv > metaphlan_species.tsv
