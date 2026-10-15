@@ -1,0 +1,15 @@
+reference	file	md5	source	notes
+sscrofa11.1	GCF_000003025.6_Sscrofa11.1_genomic.fna.gz	7e8201799720ce3e2ba63cc83f0326aa	provider-published	NCBI md5checksums.txt; binding seal for the pig reference
+grch38	GCA_000001405.15_GRCh38_no_alt_analysis_set.fna.gz	a08035b6a6e31780e96a34008ff21bd6	provider-published	NCBI md5checksums.txt (seqs_for_alignment_pipelines.ucsc_ids); binding seal for the human reference
+sscrofa11.1	sscrofa11.1.1.bt2	5d76b47520c0ee47bf09c9ef77a612e1	computed-locally 2026-10-15	index built with bowtie2 2.5.4 (bowtie2-build --threads 16 --seed 42) from the provider FASTA above
+sscrofa11.1	sscrofa11.1.2.bt2	2b655e152678aca03ef56057c5f1632d	computed-locally 2026-10-15	index built with bowtie2 2.5.4 (bowtie2-build --threads 16 --seed 42) from the provider FASTA above
+sscrofa11.1	sscrofa11.1.3.bt2	79b303785ee6c10d839d8c772c7ddf16	computed-locally 2026-10-15	index built with bowtie2 2.5.4 (bowtie2-build --threads 16 --seed 42) from the provider FASTA above
+sscrofa11.1	sscrofa11.1.4.bt2	414b109c9336900c7d4b26aa457c7337	computed-locally 2026-10-15	index built with bowtie2 2.5.4 (bowtie2-build --threads 16 --seed 42) from the provider FASTA above
+sscrofa11.1	sscrofa11.1.rev.1.bt2	a68cc60e066aa8ed7dad1ce090a4157c	computed-locally 2026-10-15	index built with bowtie2 2.5.4 (bowtie2-build --threads 16 --seed 42) from the provider FASTA above
+sscrofa11.1	sscrofa11.1.rev.2.bt2	d41723602c33027f19c1e61c629583e2	computed-locally 2026-10-15	index built with bowtie2 2.5.4 (bowtie2-build --threads 16 --seed 42) from the provider FASTA above
+grch38	grch38.1.bt2	a4841a0b52b76812ab5a00b7d390111d	computed-locally 2026-10-15	index built from the provider FASTA above; bowtie2-build version not recorded (unknown)
+grch38	grch38.2.bt2	56c4081853880066a4de5d74e559434c	computed-locally 2026-10-15	index built from the provider FASTA above; bowtie2-build version not recorded (unknown)
+grch38	grch38.3.bt2	b2d325b6836d0e957c349d3557b5a743	computed-locally 2026-10-15	index built from the provider FASTA above; bowtie2-build version not recorded (unknown)
+grch38	grch38.4.bt2	aee1363daba2b49637417b9213281591	computed-locally 2026-10-15	index built from the provider FASTA above; bowtie2-build version not recorded (unknown)
+grch38	grch38.rev.1.bt2	190f2ba81e148b298fb00129f6653a8a	computed-locally 2026-10-15	index built from the provider FASTA above; bowtie2-build version not recorded (unknown)
+grch38	grch38.rev.2.bt2	57080fad22f8ff849639433b20f45ec3	computed-locally 2026-10-15	index built from the provider FASTA above; bowtie2-build version not recorded (unknown)

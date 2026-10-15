@@ -5,7 +5,7 @@ process METAPHLAN {
     conda "${params.envs_dir}/metaphlan.yml"
     container params.container_metaphlan
 
-    publishDir "${params.outdir}/taxonomy/profiles", mode: 'copy', pattern: '*.profile.txt'
+    // Profiles are published by PUBLISH_PROFILES, which strips absolute paths from the header.
     publishDir "${params.outdir}/taxonomy/mapout", mode: 'copy', pattern: '*.mapout.bz2'
 
     input:
@@ -44,6 +44,41 @@ process METAPHLAN {
     """
 }
 
+// MetaPhlAn writes its full command line, including the absolute path of the conda
+// environment, into line 2 of each profile. Profiles are tracked in git, so they are
+// republished with every absolute path reduced to its basename (binary -> `metaphlan`).
+process PUBLISH_PROFILES {
+    tag "${profile.simpleName}"
+    label 'process_low'
+
+    publishDir "${params.outdir}/taxonomy/profiles", mode: 'copy', saveAs: { it.tokenize('/').last() }
+
+    input:
+    path profile, stageAs: 'raw/*'
+
+    output:
+    path "clean/*.profile.txt", emit: profile
+
+    script:
+    def n = profile.toString().tokenize('/').last()
+    """
+    mkdir -p clean
+    sanitize_metaphlan_profile.sh raw/${n} > clean/${n}
+    # Fail loudly if any absolute path is left in a header line.
+    if grep -En '^#.*(^|[[:space:]=,"#])/[^[:space:]]*/' clean/${n}; then
+        echo "error: absolute path left in the header of ${n}" >&2
+        exit 1
+    fi
+    """
+
+    stub:
+    def n = profile.toString().tokenize('/').last()
+    """
+    mkdir -p clean
+    sanitize_metaphlan_profile.sh raw/${n} > clean/${n}
+    """
+}
+
 process MERGE_METAPHLAN {
     label 'process_low'
     conda "${params.envs_dir}/metaphlan.yml"
@@ -68,6 +103,11 @@ process MERGE_METAPHLAN {
 
     # Species level only: keep header lines and rows ending at s__ (no strain/SGB t__ rows, no UNCLASSIFIED).
     awk -F'\\t' '/^#/ || \$1 == "clade_name" || (\$1 ~ /s__/ && \$1 !~ /t__/)' metaphlan_merged.tsv > metaphlan_species.tsv
+    # Merged tables must not carry machine-specific absolute paths.
+    if grep -En '(^|[[:space:]=,])/[^[:space:]]*/' metaphlan_merged.tsv metaphlan_species.tsv; then
+        echo "error: absolute path found in a merged table" >&2
+        exit 1
+    fi
     printf 'MERGE_METAPHLAN\\tmetaphlan\\t%s\\n' "\$(metaphlan --version 2>&1 | sed -n 's/^MetaPhlAn version \\([0-9.]*\\).*/\\1/p')" > versions.tsv
     """
 

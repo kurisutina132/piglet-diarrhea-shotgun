@@ -10,7 +10,8 @@
 
 # Databases and references (rebuilt/downloaded by scripts/)
 databases/
-references/
+references/*
+!references/checksums.tsv
 *.bt2
 *.bt2l
 *.zip
@@ -43,3 +44,4 @@ odd/
 .DS_Store
 __pycache__/
 *.swp
+analysis/.cache/

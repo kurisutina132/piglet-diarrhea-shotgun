@@ -9,8 +9,8 @@
  */
 params {
     outdir          = 'results'
-    sscrofa_index   = '/path/to/databases/sscrofa11.1/Sscrofa11.1'          // bowtie2 index prefix
-    human_index     = '/path/to/databases/grch38/GRCh38_noalt_as/GRCh38_noalt_as'
+    sscrofa_index   = '/path/to/databases/sscrofa11.1/sscrofa11.1'          // bowtie2 index prefix
+    human_index     = '/path/to/databases/grch38/grch38'
     metaphlan_index = 'mpa_vJan25_CHOCOPhlAnSGB_202503'
     metaphlan_db    = '/path/to/databases/metaphlan'
 }

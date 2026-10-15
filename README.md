@@ -19,9 +19,10 @@ Author: Cristy Medina Armijo. License: MIT.
 ## Pipeline
 
 ```
+VERIFY_REFERENCES (md5 of host indices, gates host removal)
 SRA -> FETCH_SRA -> [SUBSAMPLE, demo only] -> FASTP -> HOST_REMOVAL (Sscrofa11.1) -> HOST_REMOVAL (GRCh38)
     -> READ_COUNTS (raw / post-subsample / post-fastp / post-pig / post-human)
-    -> METAPHLAN -> merged and species-only tables
+    -> METAPHLAN -> PUBLISH_PROFILES (header paths stripped) -> merged and species-only tables
 ```
 
 Pairs are kept after host removal only if both mates are unmapped (SAM flag 12). Software versions of every run
@@ -47,11 +48,14 @@ and 39 GB RAM for the real run (MetaPhlAn needs 20+ GB).
 
    ```bash
    scripts/download_metaphlan_db.sh /data/dbs/metaphlan        # needs the metaphlan env on PATH
-   scripts/download_grch38_index.sh /data/dbs/grch38
-   scripts/build_sscrofa_index.sh   /data/dbs/sscrofa11.1 16   # needs the host-removal env on PATH
+   scripts/build_grch38_index.sh    /data/dbs/grch38 16        # needs the host-removal env on PATH
+   scripts/build_sscrofa_index.sh   /data/dbs/sscrofa11.1 16
    ```
 
-   Each script prints the exact `--...` value to pass to the pipeline. If you already have these databases,
+   Both index builders download the genomic FASTA from NCBI, enforce its provider-published md5 (the build
+   fails on a mismatch), build under a temporary prefix and move the six index files into place only after
+   `bowtie2-build` succeeds, then write a `<prefix>.complete` marker. Each script prints the exact `--...`
+   value to pass to the pipeline. If you already have these databases,
    point the parameters at them instead; machine-specific paths go in `conf/local.config`
    (copy of `conf/local.config.example`, git-ignored).
 
@@ -60,8 +64,8 @@ and 39 GB RAM for the real run (MetaPhlAn needs 20+ GB).
    ```bash
    nextflow run workflow/main.nf -profile conda \
        --outdir results \
-       --sscrofa_index /data/dbs/sscrofa11.1/Sscrofa11.1 \
-       --human_index   /data/dbs/grch38/GRCh38_noalt_as/GRCh38_noalt_as \
+       --sscrofa_index /data/dbs/sscrofa11.1/sscrofa11.1 \
+       --human_index   /data/dbs/grch38/grch38 \
        --metaphlan_index mpa_vJan25_CHOCOPhlAnSGB_202503 \
        --metaphlan_db  /data/dbs/metaphlan
    ```
@@ -76,6 +80,20 @@ and 39 GB RAM for the real run (MetaPhlAn needs 20+ GB).
 `--subsample N` keeps N read pairs per sample (`seqtk sample`, seed `--seed`, default 42, same seed on both
 mates). It exists to make demos and continuous-integration runs fast. It is not used for the main results,
 which are produced from the full data.
+
+## Sealed references
+
+`references/checksums.tsv` pins the md5 of each host reference FASTA (provider-published, from NCBI) and of
+each of the six bowtie2 index files of the indices used for the reported results (computed locally). Before host
+removal, the `VERIFY_REFERENCES` step checks the index files of both hosts against this table and stops the
+run with the list of offending files if anything is missing or differs. The result is written to
+`results/pipeline_info/reference_checks.tsv`. Disable with `--verify_references false` (not recommended); a
+different table can be given with `--references_checksums`.
+
+The binding seal is the FASTA md5. Rebuilding an index with the scripts may give different index-file md5s
+(the GRCh38 index in the table was built with an unrecorded bowtie2 version), in which case
+`VERIFY_REFERENCES` will report a mismatch for the rebuilt index; that is expected and means the table must be
+updated deliberately, with the new sums recorded as `computed-locally` and the date, never silently.
 
 ## Results
 
@@ -97,6 +115,8 @@ Other choices not specified in the paper (fastp minimum length, aligner preset) 
 workflow/   Nextflow pipeline (main.nf, nextflow.config, modules/)
 envs/       pinned conda environments, one per step
 scripts/    database download and index build scripts
+references/ checksums.tsv: pinned md5 sums of the host references and indices
+analysis/   verify_group_labels.py: checks of the group labels against the paper
 conf/       local.config.example (machine-specific paths, not committed once copied)
 data/       samplesheet (metadata.tsv) and its provenance
 results/    figures and small summary tables only

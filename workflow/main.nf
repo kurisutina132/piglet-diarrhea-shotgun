@@ -19,7 +19,8 @@ include { FASTP                                      } from './modules/fastp'
 include { HOST_REMOVAL as HOST_REMOVAL_PIG           } from './modules/host_removal'
 include { HOST_REMOVAL as HOST_REMOVAL_HUMAN         } from './modules/host_removal'
 include { READ_COUNTS; MERGE_READ_COUNTS             } from './modules/read_counts'
-include { METAPHLAN; MERGE_METAPHLAN                 } from './modules/metaphlan'
+include { METAPHLAN; PUBLISH_PROFILES; MERGE_METAPHLAN } from './modules/metaphlan'
+include { VERIFY_REFERENCES                          } from './modules/verify_references'
 
 // ---------------------------------------------------------------------------
 // Guards: every parameter that gates behaviour must be given explicitly.
@@ -45,6 +46,9 @@ def requireParams() {
         if (!prefix.parent?.exists() || !(prefix.parent.list() ?: []).any { it.startsWith(prefix.name + '.') }) {
             error "--${p}: no bowtie2 index files with prefix '${params[p]}'"
         }
+    }
+    if (params.verify_references && !file(params.references_checksums).exists()) {
+        error "--references_checksums not found: ${params.references_checksums}"
     }
     if (!file(params.metaphlan_db).isDirectory()) {
         error "--metaphlan_db is not a directory: ${params.metaphlan_db}"
@@ -88,8 +92,17 @@ workflow {
     // 3. Host removal: pig first, then human
     def pig   = file(params.sscrofa_index)
     def human = file(params.human_index)
-    HOST_REMOVAL_PIG(FASTP.out.reads, Channel.value(pig.parent), pig.name, 'pig')
-    HOST_REMOVAL_HUMAN(HOST_REMOVAL_PIG.out.reads, Channel.value(human.parent), human.name, 'human')
+    // Sealed references: the index directories are passed on unchanged, but only after
+    // VERIFY_REFERENCES has succeeded (its failure stops the run before any alignment).
+    def pig_dir   = Channel.value(pig.parent)
+    def human_dir = Channel.value(human.parent)
+    if (params.verify_references) {
+        VERIFY_REFERENCES(file(params.references_checksums), pig.parent, pig.name, human.parent, human.name)
+        pig_dir   = VERIFY_REFERENCES.out.report.map { pig.parent }
+        human_dir = VERIFY_REFERENCES.out.report.map { human.parent }
+    }
+    HOST_REMOVAL_PIG(FASTP.out.reads, pig_dir, pig.name, 'pig')
+    HOST_REMOVAL_HUMAN(HOST_REMOVAL_PIG.out.reads, human_dir, human.name, 'human')
 
     // 4. Read counts per stage
     ch_all_counts = ch_counts
@@ -102,6 +115,7 @@ workflow {
 
     // 5. Taxonomic profiling
     METAPHLAN(HOST_REMOVAL_HUMAN.out.reads, file(params.metaphlan_db), params.metaphlan_index)
+    PUBLISH_PROFILES(METAPHLAN.out.profile)
     MERGE_METAPHLAN(METAPHLAN.out.profile.collect(sort: { a, b -> a.name <=> b.name }))   // sorted by file name: deterministic column order
 
     // 6. Software versions
