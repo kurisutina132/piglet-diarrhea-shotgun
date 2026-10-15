@@ -102,7 +102,7 @@ workflow {
 
     // 5. Taxonomic profiling
     METAPHLAN(HOST_REMOVAL_HUMAN.out.reads, file(params.metaphlan_db), params.metaphlan_index)
-    MERGE_METAPHLAN(METAPHLAN.out.profile.collect())
+    MERGE_METAPHLAN(METAPHLAN.out.profile.collect(sort: true))   // sorted: deterministic column order
 
     // 6. Software versions
     FASTP.out.versions

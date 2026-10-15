@@ -27,7 +27,7 @@ results/*
 !results/qc/
 results/qc/fastp/
 !results/taxonomy/
-results/taxonomy/bowtie2out/
+results/taxonomy/mapout/
 !results/pipeline_info/
 results/pipeline_info/*
 !results/pipeline_info/versions.tsv

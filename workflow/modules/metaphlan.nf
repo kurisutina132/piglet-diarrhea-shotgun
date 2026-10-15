@@ -6,7 +6,7 @@ process METAPHLAN {
     container params.container_metaphlan
 
     publishDir "${params.outdir}/taxonomy/profiles", mode: 'copy', pattern: '*.profile.txt'
-    publishDir "${params.outdir}/taxonomy/bowtie2out", mode: 'copy', pattern: '*.bowtie2out.bz2'
+    publishDir "${params.outdir}/taxonomy/mapout", mode: 'copy', pattern: '*.mapout.bz2'
 
     input:
     tuple val(meta), path(r1), path(r2)
@@ -15,7 +15,7 @@ process METAPHLAN {
 
     output:
     path "${meta.id}.profile.txt",     emit: profile
-    path "${meta.id}.bowtie2out.bz2",  emit: bowtie2out
+    path "${meta.id}.mapout.bz2",  emit: mapout
     path "versions.tsv",               emit: versions
 
     script:
@@ -28,7 +28,7 @@ process METAPHLAN {
         --index ${index} --db_dir ${db_dir} \\
         --nproc ${task.cpus} \\
         -t ${params.metaphlan_analysis_type} ${unclass} \\
-        --bowtie2out ${id}.bowtie2out.bz2 \\
+        --mapout ${id}.mapout.bz2 \\
         -o ${id}.profile.txt
 
     printf 'METAPHLAN\\tmetaphlan\\t%s\\n' "\$(metaphlan --version 2>&1 | sed -n 's/^MetaPhlAn version \\([0-9.]*\\).*/\\1/p')" > versions.tsv
@@ -39,7 +39,7 @@ process METAPHLAN {
     def id = meta.id
     """
     printf '#mpa_stub\\nclade_name\\tNCBI_tax_id\\trelative_abundance\\tcoverage\\testimated_number_of_reads_from_the_clade\\nk__Bacteria\\t2\\t100.0\\t1\\t1\\nk__Bacteria|p__Firmicutes|c__Clostridia|o__Eubacteriales|f__X|g__Y|s__Y_z\\t2|1\\t100.0\\t1\\t1\\n' > ${id}.profile.txt
-    echo stub | bzip2 > ${id}.bowtie2out.bz2
+    echo stub | bzip2 > ${id}.mapout.bz2
     printf 'METAPHLAN\\tmetaphlan\\tstub\\n' > versions.tsv
     """
 }
