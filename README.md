@@ -6,7 +6,7 @@ and taxonomic profiling with MetaPhlAn 4.
 
 Author: Cristy Medina Armijo. License: MIT.
 
-> Status: pipeline skeleton. Results sections below are pending; nothing in this repository reports final results yet.
+> Status: working, reproducible pipeline with a two-sample demo and continuous integration. The full 16-sample reanalysis is fully specified and runnable (see Quickstart); it was not executed in this environment. This repository is published as a pipeline-engineering reference, not a results report.
 
 ## Dataset
 
@@ -97,7 +97,7 @@ updated deliberately, with the new sums recorded as `computed-locally` and the d
 
 ## Results
 
-Pending. The report will be linked here once it exists: [report/report.html](report/report.html).
+This repository publishes the pipeline, not a results report. The workflow runs end-to-end on a two-sample demo (`-profile test`) and in CI; the full 16-sample reanalysis is specified in the Quickstart and left as the documented next step.
 
 ## Deviations from the paper
 

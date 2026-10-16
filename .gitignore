@@ -45,3 +45,8 @@ odd/
 __pycache__/
 *.swp
 analysis/.cache/
+
+# Agent tooling, stray logs, checkpoint scratch
+.atl/
+*.log
+results_cp2/

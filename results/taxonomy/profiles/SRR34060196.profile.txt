@@ -1,0 +1,63 @@
+#mpa_vJan25_CHOCOPhlAnSGB_202503
+#metaphlan SRR34060196.human_1.fastq.gz,SRR34060196.human_2.fastq.gz --input_type fastq --index mpa_vJan25_CHOCOPhlAnSGB_202503 --db_dir metaphlan --nproc 16 -t rel_ab_w_read_stats --mapout SRR34060196.mapout.bz2 -o SRR34060196.profile.txt
+#1544986 reads processed
+#SampleID	Metaphlan_Analysis
+#Estimated reads mapped to known clades: 708301
+#clade_name	clade_taxid	relative_abundance	coverage	estimated_number_of_reads_from_the_clade
+UNCLASSIFIED	-1	54.15486	-	836685
+k__Bacteria	2	45.84514	0.13117726914510436	708301
+k__Bacteria|p__Pseudomonadota	2|1224	41.663047	0.11921099243562926	579151
+k__Bacteria|p__Firmicutes	2|1239	2.903632	0.008308198223134458	55022
+k__Bacteria|p__Bacteroidota	2|976	1.278462	0.003658078486340638	74128
+k__Bacteria|p__Pseudomonadota|c__Gammaproteobacteria	2|1224|1236	41.663047	0.11921099243562926	579151
+k__Bacteria|p__Firmicutes|c__Clostridia	2|1239|186801	2.903632	0.008308198223134458	55022
+k__Bacteria|p__Bacteroidota|c__Bacteroidia	2|976|200643	1.278462	0.003658078486340638	74128
+k__Bacteria|p__Pseudomonadota|c__Gammaproteobacteria|o__Enterobacterales	2|1224|1236|91347	41.537884	0.11885286264720668	575091
+k__Bacteria|p__Firmicutes|c__Clostridia|o__Eubacteriales	2|1239|186801|186802	1.784426	0.005105800610880341	38150
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales	2|976|200643|171549	1.278462	0.003658078486340638	74128
+k__Bacteria|p__Firmicutes|c__Clostridia|o__Lachnospirales	2|1239|186801|3085636	1.119206	0.0032023976122541164	16872
+k__Bacteria|p__Pseudomonadota|c__Gammaproteobacteria|o__Pasteurellales	2|1224|1236|135625	0.125163	0.0003581297884225695	4060
+k__Bacteria|p__Pseudomonadota|c__Gammaproteobacteria|o__Enterobacterales|f__Enterobacteriaceae	2|1224|1236|91347|543	41.537884	0.11885286264720668	575091
+k__Bacteria|p__Firmicutes|c__Clostridia|o__Eubacteriales|f__Clostridiaceae	2|1239|186801|186802|31979	1.784426	0.005105800610880341	38150
+k__Bacteria|p__Firmicutes|c__Clostridia|o__Lachnospirales|f__Lachnospiraceae	2|1239|186801|3085636|186803	1.119206	0.0032023976122541164	16872
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Bacteroidaceae	2|976|200643|171549|815	0.666102	0.0019059251813306462	18259
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Prevotellaceae	2|976|200643|171549|171552	0.595205	0.001703068154316507	47189
+k__Bacteria|p__Pseudomonadota|c__Gammaproteobacteria|o__Pasteurellales|f__Pasteurellaceae	2|1224|1236|135625|712	0.125163	0.0003581297884225695	4060
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Muribaculaceae	2|976|200643|171549|2005473	0.017155	4.908515069348493e-05	8680
+k__Bacteria|p__Pseudomonadota|c__Gammaproteobacteria|o__Enterobacterales|f__Enterobacteriaceae|g__Escherichia	2|1224|1236|91347|543|561	41.537884	0.11885286264720668	575091
+k__Bacteria|p__Firmicutes|c__Clostridia|o__Eubacteriales|f__Clostridiaceae|g__Clostridium	2|1239|186801|186802|31979|1485	1.784426	0.005105800610880341	38150
+k__Bacteria|p__Firmicutes|c__Clostridia|o__Lachnospirales|f__Lachnospiraceae|g__Zhenhengia	2|1239|186801|3085636|186803|2944196	1.119206	0.0032023976122541164	16872
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Bacteroidaceae|g__Bacteroides	2|976|200643|171549|815|816	0.666102	0.0019059251813306462	18259
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Prevotellaceae|g__Segatella	2|976|200643|171549|171552|2974251	0.490188	0.0014025813240117163	33887
+k__Bacteria|p__Pseudomonadota|c__Gammaproteobacteria|o__Pasteurellales|f__Pasteurellaceae|g__Pasteurellaceae_unclassified	2|1224|1236|135625|712|	0.125163	0.0003581297884225695	4060
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Prevotellaceae|g__Xylanibacter	2|976|200643|171549|171552|558436	0.089526	0.0002561611002306822	6856
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Muribaculaceae|g__GGB1458	2|976|200643|171549|2005473|	0.017155	4.908515069348493e-05	8680
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Prevotellaceae|g__Prevotella	2|976|200643|171549|171552|838	0.015491	4.432573007410852e-05	6446
+k__Bacteria|p__Pseudomonadota|c__Gammaproteobacteria|o__Enterobacterales|f__Enterobacteriaceae|g__Escherichia|s__Escherichia_coli	2|1224|1236|91347|543|561|562	41.537884	0.11885286264720668	575091
+k__Bacteria|p__Firmicutes|c__Clostridia|o__Eubacteriales|f__Clostridiaceae|g__Clostridium|s__Clostridium_perfringens	2|1239|186801|186802|31979|1485|1502	1.32371	0.0037875489742987827	17877
+k__Bacteria|p__Firmicutes|c__Clostridia|o__Lachnospirales|f__Lachnospiraceae|g__Zhenhengia|s__Zhenhengia_yiwuensis	2|1239|186801|3085636|186803|2944196|2763666	1.119206	0.0032023976122541164	16872
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Bacteroidaceae|g__Bacteroides|s__Bacteroides_fragilis	2|976|200643|171549|815|816|817	0.666102	0.0019059251813306462	18259
+k__Bacteria|p__Firmicutes|c__Clostridia|o__Eubacteriales|f__Clostridiaceae|g__Clostridium|s__Clostridium_paraputrificum	2|1239|186801|186802|31979|1485|29363	0.423184	0.0012108604761528413	12264
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Prevotellaceae|g__Segatella|s__Segatella_copri	2|976|200643|171549|171552|2974251|165179	0.237364	0.0006791719673894747	8862
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Prevotellaceae|g__Segatella|s__Segatella_hominis	2|976|200643|171549|171552|2974251|2518605	0.19778	0.0005659097430817692	8463
+k__Bacteria|p__Pseudomonadota|c__Gammaproteobacteria|o__Pasteurellales|f__Pasteurellaceae|g__Pasteurellaceae_unclassified|s__Actinobacillus_rossii	2|1224|1236|135625|712||123820	0.125163	0.0003581297884225695	4060
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Prevotellaceae|g__Xylanibacter|s__Xylanibacter_brevis	2|976|200643|171549|171552|558436|83231	0.089526	0.0002561611002306822	6856
+k__Bacteria|p__Firmicutes|c__Clostridia|o__Eubacteriales|f__Clostridiaceae|g__Clostridium|s__Clostridium_SGB47284	2|1239|186801|186802|31979|1485|	0.037532	0.00010739116042871688	8009
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Prevotellaceae|g__Segatella|s__Segatella_brunsvicensis	2|976|200643|171549|171552|2974251|165179	0.029319	8.38915713822825e-05	7231
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Prevotellaceae|g__Segatella|s__Segatella_brasiliensis	2|976|200643|171549|171552|2974251|165179	0.025725	7.360804215818995e-05	9331
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Muribaculaceae|g__GGB1458|s__GGB1458_SGB2021	2|976|200643|171549|2005473||	0.017155	4.908515069348493e-05	8680
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Prevotellaceae|g__Prevotella|s__Prevotella_pectinovora	2|976|200643|171549|171552|838|1602169	0.015491	4.432573007410852e-05	6446
+k__Bacteria|p__Pseudomonadota|c__Gammaproteobacteria|o__Enterobacterales|f__Enterobacteriaceae|g__Escherichia|s__Escherichia_coli|t__SGB10068	2|1224|1236|91347|543|561|562|	41.537884	0.11885286264720668	575091
+k__Bacteria|p__Firmicutes|c__Clostridia|o__Eubacteriales|f__Clostridiaceae|g__Clostridium|s__Clostridium_perfringens|t__SGB6191	2|1239|186801|186802|31979|1485|1502|	1.32371	0.0037875489742987827	17877
+k__Bacteria|p__Firmicutes|c__Clostridia|o__Lachnospirales|f__Lachnospiraceae|g__Zhenhengia|s__Zhenhengia_yiwuensis|t__SGB6077	2|1239|186801|3085636|186803|2944196|2763666|	1.119206	0.0032023976122541164	16872
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Bacteroidaceae|g__Bacteroides|s__Bacteroides_fragilis|t__SGB1855	2|976|200643|171549|815|816|817|	0.666102	0.0019059251813306462	18259
+k__Bacteria|p__Firmicutes|c__Clostridia|o__Eubacteriales|f__Clostridiaceae|g__Clostridium|s__Clostridium_paraputrificum|t__SGB6187	2|1239|186801|186802|31979|1485|29363|	0.423184	0.0012108604761528413	12264
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Prevotellaceae|g__Segatella|s__Segatella_copri|t__SGB1626	2|976|200643|171549|171552|2974251|165179|	0.237364	0.0006791719673894747	8862
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Prevotellaceae|g__Segatella|s__Segatella_hominis|t__SGB1617	2|976|200643|171549|171552|2974251|2518605|	0.19778	0.0005659097430817692	8463
+k__Bacteria|p__Pseudomonadota|c__Gammaproteobacteria|o__Pasteurellales|f__Pasteurellaceae|g__Pasteurellaceae_unclassified|s__Actinobacillus_rossii|t__SGB23108	2|1224|1236|135625|712||123820|	0.125163	0.0003581297884225695	4060
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Prevotellaceae|g__Xylanibacter|s__Xylanibacter_brevis|t__SGB1606	2|976|200643|171549|171552|558436|83231|	0.089526	0.0002561611002306822	6856
+k__Bacteria|p__Firmicutes|c__Clostridia|o__Eubacteriales|f__Clostridiaceae|g__Clostridium|s__Clostridium_SGB47284|t__SGB47284	2|1239|186801|186802|31979|1485||	0.037532	0.00010739116042871688	8009
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Prevotellaceae|g__Segatella|s__Segatella_brunsvicensis|t__SGB1613	2|976|200643|171549|171552|2974251|165179|	0.029319	8.38915713822825e-05	7231
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Prevotellaceae|g__Segatella|s__Segatella_brasiliensis|t__SGB1636	2|976|200643|171549|171552|2974251|165179|	0.025725	7.360804215818995e-05	9331
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Muribaculaceae|g__GGB1458|s__GGB1458_SGB2021|t__SGB2021	2|976|200643|171549|2005473|||	0.017155	4.908515069348493e-05	8680
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Prevotellaceae|g__Prevotella|s__Prevotella_pectinovora|t__SGB1662	2|976|200643|171549|171552|838|1602169|	0.015491	4.432573007410852e-05	6446
