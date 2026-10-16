@@ -6,7 +6,7 @@ and taxonomic profiling with MetaPhlAn 4.
 
 Author: Cristy Medina Armijo. License: MIT.
 
-> Status: working, reproducible pipeline with a two-sample demo and continuous integration. The full 16-sample reanalysis is fully specified and runnable (see Quickstart); it was not executed in this environment. This repository is published as a pipeline-engineering reference, not a results report.
+> Status: working, reproducible pipeline with a validated two-sample demo. The full 16-sample reanalysis is fully specified and runnable (see Quickstart); it was not executed in this environment. This repository is published as a pipeline-engineering reference, not a results report.
 
 ## Dataset
 
@@ -75,10 +75,10 @@ and 39 GB RAM for the real run (MetaPhlAn needs 20+ GB).
    - Wiring check without tools or data: add `-stub` (needs dummy index and database paths that exist).
    - `-profile docker` uses pinned `quay.io/biocontainers` images instead of conda.
 
-### `--subsample N` (demo / CI only)
+### `--subsample N` (demo only)
 
 `--subsample N` keeps N read pairs per sample (`seqtk sample`, seed `--seed`, default 42, same seed on both
-mates). It exists to make demos and continuous-integration runs fast. It is not used for the main results,
+mates). It exists to make demo runs fast. It is not used for the main results,
 which are produced from the full data.
 
 ## Sealed references
@@ -97,7 +97,7 @@ updated deliberately, with the new sums recorded as `computed-locally` and the d
 
 ## Results
 
-This repository publishes the pipeline, not a results report. The workflow runs end-to-end on a two-sample demo (`-profile test`) and in CI; the full 16-sample reanalysis is specified in the Quickstart and left as the documented next step.
+This repository publishes the pipeline, not a results report. The workflow runs end-to-end on a two-sample demo (`-profile test`); the full 16-sample reanalysis is specified in the Quickstart and left as the documented next step.
 
 ## Deviations from the paper
 
